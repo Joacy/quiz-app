@@ -1,0 +1,13 @@
+button.start {
+    background: cornflowerblue;
+    color: white;
+    font-size: 32px;
+    border-radius: 4px;
+    padding: 15px 50px;
+    border: none;
+    cursor: pointer;
+}
+
+button.start:hover {
+    opacity: 0.9;
+}
