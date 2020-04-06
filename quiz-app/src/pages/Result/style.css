@@ -1,0 +1,18 @@
+.results {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+}
+
+.results h2 {
+    color: cornflowerblue;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.results h3 {
+    color: cornflowerblue;
+    font-weight: 700;
+    margin: 15px 0;
+}

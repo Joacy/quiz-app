@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+
 import './style.css';
 import api from '../../services/api';
 
@@ -40,26 +43,34 @@ export default function Quiz () {
     // });
 
     return (
-        <div className='block'>
-            {questions.map((element, index) => (
-                <div key={element.question} className="question-answer">
-                    <p className='question'>{index + 1} - {element.question}</p>
-                    <ul className='answers'>
-                        <li className='answer'>
-                            a) {element.correct_answer}
-                        </li>
-                        <li className='answer'>
-                            b) {element.incorrect_answers[0]}
-                        </li>
-                        <li className='answer'>
-                            c) {element.incorrect_answers[1]}
-                        </li>
-                        <li className='answer'>
-                            d) {element.incorrect_answers[2]}
-                        </li>
-                    </ul>
-                </div>
-            ))}
-        </div>
+        <>
+            <Header />
+            <div className='block'>
+                {questions.map((element, index) => (
+                    <div key={element.question} className="question-answer">
+                        <p className='question'>{index + 1} - {element.question}</p>
+                        <ul className='answers'>
+                            <li className='answer'>
+                                {element.correct_answer}
+                            </li>
+                            <li className='answer'>
+                                {element.incorrect_answers[0]}
+                            </li>
+                            <li className='answer'>
+                                {element.incorrect_answers[1]}
+                            </li>
+                            <li className='answer'>
+                                {element.incorrect_answers[2]}
+                            </li>
+                        </ul>
+                    </div>
+                ))}
+            </div>
+
+            <Link className='botao' to='/result'>
+                Send Answers
+            </Link>
+            <Footer />
+        </>
     );
 }
