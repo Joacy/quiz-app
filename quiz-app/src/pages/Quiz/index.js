@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import QuestionBlock from '../../components/QuestionBlock';
-
+import './style.css';
 import api from '../../services/api';
 
 export default function Quiz () {
     const [questions, setQuestions] = useState([]);
+
+    const [answers, setAnswers] = useState([]);
 
     const history = useHistory();
 
@@ -27,8 +28,38 @@ export default function Quiz () {
     }
 
     window.onload = () => loadQuiz();
+    // console.log(questions);
+
+    // questions.forEach(element => {
+    //     console.log(element.category);
+    //     console.log(element.question);
+    //     console.log(element.correct_answer);
+    //     element.incorrect_answers.forEach(inco => {
+    //         console.log(inco);
+    //     });
+    // });
 
     return (
-        <QuestionBlock />
+        <div className='block'>
+            {questions.map((element, index) => (
+                <div key={element.question} className="question-answer">
+                    <p className='question'>{index + 1} - {element.question}</p>
+                    <ul className='answers'>
+                        <li className='answer'>
+                            a) {element.correct_answer}
+                        </li>
+                        <li className='answer'>
+                            b) {element.incorrect_answers[0]}
+                        </li>
+                        <li className='answer'>
+                            c) {element.incorrect_answers[1]}
+                        </li>
+                        <li className='answer'>
+                            d) {element.incorrect_answers[2]}
+                        </li>
+                    </ul>
+                </div>
+            ))}
+        </div>
     );
 }

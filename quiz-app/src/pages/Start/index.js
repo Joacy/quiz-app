@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import ButtonStart from '../../components/ButtonStart';
+import './style.css';
 
 export default function Start () {
     return (
-        <Link to='/quiz'>
-            <ButtonStart />
+        <Link className='start' to='/quiz'>
+            Start Quiz
         </Link>
     );
 }

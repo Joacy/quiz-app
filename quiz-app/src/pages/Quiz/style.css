@@ -1,0 +1,44 @@
+.block {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.block .question-answer {
+    margin: 30px 0px;
+}
+
+.block .question-answer .question {
+    font-size: 18px;
+    font-weight: 700;
+    background: cornflowerblue;
+    border: 2px solid cornflowerblue;
+    border-radius: 4px;
+    padding: 15px;
+    color: white;
+}
+
+.block .question-answer .answers {
+    list-style: none;
+}
+
+.block .question-answer .answers .answer {
+    font-size: 16px;
+    font-weight: 700;
+    border: 2px solid cornflowerblue;
+    color: cornflowerblue;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.block .question-answer .answers .answer.clicked {
+    background: cornflowerblue;
+    color: white;
+}
