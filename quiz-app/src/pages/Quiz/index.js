@@ -12,6 +12,8 @@ export default function Quiz () {
 
     const [answers, setAnswers] = useState([]);
 
+    const [clicked, setClicked] = useState([false, false, false, false]);
+
     const history = useHistory();
 
     async function loadQuiz () {
@@ -49,18 +51,22 @@ export default function Quiz () {
 
     function handleMarkOne () {
         console.log('Marcou 1');
+        console.log(clicked);
     }
 
     function handleMarkTwo () {
         console.log('Marcou 2');
+        console.log(clicked);
     }
 
     function handleMarkThree () {
         console.log('Marcou 3');
+        console.log(clicked);
     }
 
     function handleMarkFour () {
         console.log('Marcou 4');
+        console.log(clicked);
     }
 
     return (
@@ -71,16 +77,44 @@ export default function Quiz () {
                     <div key={element.question} className="question-answer">
                         <p className='question'>{index + 1} - {element.question}</p>
                         <ul className='answers'>
-                            <li id='one' onClick={() => handleMarkOne()} className='answer'>
+                            <li
+                                id='one'
+                                onClick={() => {
+                                    handleMarkOne();
+                                    setClicked([true, false, false, false]);
+                                }}
+                                className={`answer ${clicked[0] === true ? "clicked" : ""}`}
+                            >
                                 {element.correct_answer}
                             </li>
-                            <li id='two' onClick={() => handleMarkTwo()} className='answer'>
+                            <li
+                                id='two'
+                                onClick={() => {
+                                    handleMarkTwo();
+                                    setClicked([false, true, false, false]);
+                                }}
+                                className={`answer ${clicked[1] === true ? "clicked" : ""}`}
+                            >
                                 {element.incorrect_answers[0]}
                             </li>
-                            <li id='three' onClick={() => handleMarkThree()} className='answer'>
+                            <li
+                                id='three'
+                                onClick={() => {
+                                    handleMarkThree();
+                                    setClicked([false, false, true, false]);
+                                }}
+                                className={`answer ${clicked[2] === true ? "clicked" : ""}`}
+                            >
                                 {element.incorrect_answers[1]}
                             </li>
-                            <li id='four' onClick={() => handleMarkFour()} className='answer'>
+                            <li
+                                id='four'
+                                onClick={() => {
+                                    handleMarkFour();
+                                    setClicked([false, false, false, true]);
+                                }}
+                                className={`answer ${clicked[3] === true ? "clicked" : ""}`}
+                            >
                                 {element.incorrect_answers[2]}
                             </li>
                         </ul>
