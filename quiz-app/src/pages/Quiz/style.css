@@ -36,6 +36,7 @@
     padding: 15px;
     margin-top: 15px;
     text-align: left;
+    cursor: pointer;
 }
 
 .block .question-answer .answers .answer.clicked {
