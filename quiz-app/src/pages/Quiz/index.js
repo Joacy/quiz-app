@@ -42,6 +42,27 @@ export default function Quiz () {
     //     });
     // });
 
+    const one = document.getElementById('one');
+    const two = document.getElementById('two');
+    const three = document.getElementById('three');
+    const four = document.getElementById('four');
+
+    function handleMarkOne () {
+        console.log('Marcou 1');
+    }
+
+    function handleMarkTwo () {
+        console.log('Marcou 2');
+    }
+
+    function handleMarkThree () {
+        console.log('Marcou 3');
+    }
+
+    function handleMarkFour () {
+        console.log('Marcou 4');
+    }
+
     return (
         <>
             <Header />
@@ -50,16 +71,16 @@ export default function Quiz () {
                     <div key={element.question} className="question-answer">
                         <p className='question'>{index + 1} - {element.question}</p>
                         <ul className='answers'>
-                            <li className='answer'>
+                            <li id='one' onClick={() => handleMarkOne()} className='answer'>
                                 {element.correct_answer}
                             </li>
-                            <li className='answer'>
+                            <li id='two' onClick={() => handleMarkTwo()} className='answer'>
                                 {element.incorrect_answers[0]}
                             </li>
-                            <li className='answer'>
+                            <li id='three' onClick={() => handleMarkThree()} className='answer'>
                                 {element.incorrect_answers[1]}
                             </li>
-                            <li className='answer'>
+                            <li id='four' onClick={() => handleMarkFour()} className='answer'>
                                 {element.incorrect_answers[2]}
                             </li>
                         </ul>
