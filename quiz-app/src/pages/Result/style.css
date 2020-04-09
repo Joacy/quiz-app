@@ -3,6 +3,7 @@
     flex-direction: column;
     width: 100%;
     padding: 15px;
+    margin: auto;
 }
 
 .results h2 {
@@ -15,4 +16,20 @@
     color: cornflowerblue;
     font-weight: 700;
     margin: 15px 0;
+}
+
+.results .botao {
+    background: cornflowerblue;
+    color: white;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 15px 50px;
+    border: none;
+    margin: 0 auto;
+    margin-top: 25px;
+    text-decoration: none;
+}
+
+.results .botao:hover {
+    opacity: 0.9;
 }

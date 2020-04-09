@@ -2,10 +2,9 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
-    margin: 0 auto;
+    margin: auto;
     width: 100%;
     max-width: 800px;
-    overflow-y: auto;
 }
 
 .block .question-answer {
@@ -37,9 +36,35 @@
     margin-top: 15px;
     text-align: left;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .block .question-answer .answers .answer.clicked {
     background: cornflowerblue;
     color: white;
+}
+
+.botao-quiz {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: cornflowerblue;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 15px;
+    border: none;
+    margin: 0 auto;
+    margin-top: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao-quiz:hover {
+    opacity: 0.9;
+}
+
+.botao-quiz.out {
+    display: none;
 }

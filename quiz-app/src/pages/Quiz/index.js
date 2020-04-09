@@ -14,6 +14,8 @@ export default function Quiz () {
 
     const [clicked, setClicked] = useState([false, false, false, false]);
 
+    const [current, setCurrent] = useState(0);
+
     const history = useHistory();
 
     async function loadQuiz () {
@@ -73,7 +75,7 @@ export default function Quiz () {
         <>
             <Header />
             <div className='block'>
-                {questions.map((element, index) => (
+                {questions.map((element, index) => (index === current) && (
                     <div key={element.question} className="question-answer">
                         <p className='question'>{index + 1} - {element.question}</p>
                         <ul className='answers'>
@@ -118,13 +120,23 @@ export default function Quiz () {
                                 {element.incorrect_answers[2]}
                             </li>
                         </ul>
+
+                        <button
+                            onClick={() => setCurrent(current + 1)}
+                            className={`botao-quiz ${(current + 1 < questions.length) ? '' : 'out'}`}
+                        >
+                            Next
+                        </button>
+
+                        <Link
+                            className={`botao-quiz ${(current + 1 < questions.length) ? 'out' : ''}`}
+                            to='/result'
+                        >
+                            Send Answers
+                        </Link>
                     </div>
                 ))}
             </div>
-
-            <Link className='botao' to='/result'>
-                Send Answers
-            </Link>
             <Footer />
         </>
     );
