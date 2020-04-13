@@ -5,7 +5,11 @@ import { shade } from 'polished'
 
 import { HeaderBox, SwitchBox } from './style';
 
-export default function Header () {
+interface Props {
+    toogleTheme (): void;
+}
+
+const Header: React.FC<Props> = ({ toogleTheme }) => {
     const { colors, title } = useContext(ThemeContext);
 
     return (
@@ -14,7 +18,7 @@ export default function Header () {
 
             <SwitchBox>
                 <Switch
-                    onChange={() => { }}
+                    onChange={toogleTheme}
                     checked={title === 'dark'}
                     checkedIcon={false}
                     uncheckedIcon={false}
@@ -27,4 +31,6 @@ export default function Header () {
             </SwitchBox>
         </HeaderBox>
     );
-}
+};
+
+export default Header;
