@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
@@ -18,23 +18,26 @@ export default function Quiz () {
 
     const history = useHistory();
 
-    async function loadQuiz () {
-        try {
-            const response = await api.get('api.php', {
-                params: {
-                    amount: 20,
-                    category: 18,
-                    type: 'multiple',
-                },
-            });
+    useEffect(() => {
+        async function loadQuiz () {
+            try {
+                const response = await api.get('api.php', {
+                    params: {
+                        amount: 20,
+                        category: 18,
+                        type: 'multiple',
+                    },
+                });
 
-            setQuestions(response.data.results);
-        } catch (error) {
-            alert('Falha em requisitar questões');
+                setQuestions(response.data.results);
+            } catch (error) {
+                alert('Falha em requisitar questões');
+            }
         }
-    }
 
-    window.onload = () => loadQuiz();
+        loadQuiz();
+    }, []);
+
     // console.log(questions);
 
     // questions.forEach(element => {
