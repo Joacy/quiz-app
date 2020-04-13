@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-
-import './style.css';
+import { Block, QuestionAnswer, Question, Answers, Answer, BotaoQuiz, BotaoSend } from './style';
 import api from '../../services/api';
 
 export default function Quiz () {
@@ -74,15 +71,20 @@ export default function Quiz () {
         console.log(clicked);
     }
 
+    function endQuiz () {
+        history.push('result');
+    }
+
     return (
         <>
-            <Header />
-            <div className='block'>
+            <Block>
                 {questions.map((element, index) => (index === current) && (
-                    <div key={element.question} className="question-answer">
-                        <p className='question'>{index + 1} - {element.question}</p>
-                        <ul className='answers'>
-                            <li
+                    <QuestionAnswer key={element.question}>
+                        <Question>
+                            {index + 1} - {element.question}
+                        </Question>
+                        <Answers>
+                            <Answer
                                 id='one'
                                 onClick={() => {
                                     handleMarkOne();
@@ -91,8 +93,9 @@ export default function Quiz () {
                                 className={`answer ${clicked[0] === true ? "clicked" : ""}`}
                             >
                                 {element.correct_answer}
-                            </li>
-                            <li
+                            </Answer>
+
+                            <Answer
                                 id='two'
                                 onClick={() => {
                                     handleMarkTwo();
@@ -101,8 +104,9 @@ export default function Quiz () {
                                 className={`answer ${clicked[1] === true ? "clicked" : ""}`}
                             >
                                 {element.incorrect_answers[0]}
-                            </li>
-                            <li
+                            </Answer>
+
+                            <Answer
                                 id='three'
                                 onClick={() => {
                                     handleMarkThree();
@@ -111,8 +115,9 @@ export default function Quiz () {
                                 className={`answer ${clicked[2] === true ? "clicked" : ""}`}
                             >
                                 {element.incorrect_answers[1]}
-                            </li>
-                            <li
+                            </Answer>
+
+                            <Answer
                                 id='four'
                                 onClick={() => {
                                     handleMarkFour();
@@ -121,26 +126,24 @@ export default function Quiz () {
                                 className={`answer ${clicked[3] === true ? "clicked" : ""}`}
                             >
                                 {element.incorrect_answers[2]}
-                            </li>
-                        </ul>
+                            </Answer>
+                        </Answers>
 
-                        <button
+                        <BotaoQuiz
                             onClick={() => setCurrent(current + 1)}
-                            className={`botao-quiz ${(current + 1 < questions.length) ? '' : 'out'}`}
                         >
                             Next
-                        </button>
+                        </BotaoQuiz>
 
-                        <Link
-                            className={`botao-quiz ${(current + 1 < questions.length) ? 'out' : ''}`}
-                            to='/result'
+                        <BotaoSend
+                            onClick={() => endQuiz()}
                         >
                             Send Answers
-                        </Link>
-                    </div>
+                        </BotaoSend>
+
+                    </QuestionAnswer>
                 ))}
-            </div>
-            <Footer />
+            </Block>
         </>
     );
 }

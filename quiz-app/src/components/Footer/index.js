@@ -1,11 +1,11 @@
 import React from 'react';
 
-import './style.css';
+import {FooterBox} from './style';
 
 export default function Footer(){
     return(
-        <footer>
+        <FooterBox>
             Developed by Joacy Mesquita
-        </footer>
+        </FooterBox>
     );
 }
