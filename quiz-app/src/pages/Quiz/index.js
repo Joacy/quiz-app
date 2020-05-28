@@ -129,17 +129,19 @@ export default function Quiz () {
                             </Answer>
                         </Answers>
 
-                        <BotaoQuiz
-                            onClick={() => setCurrent(current + 1)}
-                        >
-                            Next
-                        </BotaoQuiz>
-
-                        <BotaoSend
-                            onClick={() => endQuiz()}
-                        >
-                            Send Answers
-                        </BotaoSend>
+                        {(current === 19 ?
+                            <BotaoSend
+                                onClick={() => endQuiz()}
+                            >
+                                <span>Send Answers</span>
+                            </BotaoSend>
+                            :
+                            <BotaoQuiz
+                                onClick={() => setCurrent(current + 1)}
+                            >
+                                <span>Next</span>
+                            </BotaoQuiz>
+                        )}
 
                     </QuestionAnswer>
                 ))}
